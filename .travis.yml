@@ -1,12 +1,13 @@
 language: python
 python:
-  - 3.5
+  - 3.8
 
 services:
   - docker
 
 install:
-  - docker build -t madduci/docker-cpp-env:latest .
+  - docker build -t pykler/alpine-cpp-x64:latest .
+  - sed 's#alpine:latest#i386/alpine:latest#' Dockerfile | docker build -t pykler/alpine-cpp-x86 -
 
 script:
   - docker images
